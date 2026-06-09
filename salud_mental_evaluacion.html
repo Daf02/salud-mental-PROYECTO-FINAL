@@ -1,0 +1,1151 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TEMA 3 – Autocuidado como Vida Reflexiva</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --verde: #2ecc71;
+    --verde-oscuro: #1a9e52;
+    --azul: #3498db;
+    --morado: #9b59b6;
+    --naranja: #e67e22;
+    --rojo: #e74c3c;
+    --amarillo: #f1c40f;
+    --crema: #fdf6ec;
+    --gris: #2c3e50;
+    --blanco: #ffffff;
+    --sombra: 0 8px 32px rgba(44,62,80,0.13);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Nunito', sans-serif;
+    background: linear-gradient(135deg, #e8f8f0 0%, #eaf4fb 50%, #f3eeff 100%);
+    color: var(--gris);
+    min-height: 100vh;
+  }
+
+  /* ─── HEADER ─── */
+  header {
+    background: linear-gradient(120deg, #1a9e52 0%, #2ecc71 40%, #3498db 100%);
+    color: white;
+    padding: 38px 20px 30px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  header::before {
+    content:'';
+    position:absolute; inset:0;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 200'%3E%3Ccircle cx='100' cy='50' r='80' fill='rgba(255,255,255,0.06)'/%3E%3Ccircle cx='700' cy='150' r='120' fill='rgba(255,255,255,0.05)'/%3E%3Ccircle cx='400' cy='10' r='60' fill='rgba(255,255,255,0.07)'/%3E%3C/svg%3E") no-repeat center/cover;
+  }
+  header .badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.22);
+    border: 1.5px solid rgba(255,255,255,0.4);
+    border-radius: 30px;
+    padding: 5px 18px;
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.7rem, 4vw, 2.8rem);
+    font-weight: 900;
+    line-height: 1.15;
+    text-shadow: 0 2px 12px rgba(0,0,0,0.18);
+  }
+  header p {
+    margin-top: 10px;
+    font-size: 1.05rem;
+    opacity: 0.92;
+  }
+  .emoji-banner {
+    font-size: 2.2rem;
+    margin-bottom: 8px;
+    display: block;
+  }
+
+  /* ─── NAV PROGRESO ─── */
+  .progress-bar-wrap {
+    background: white;
+    padding: 14px 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .progress-bar-wrap span { font-size: 0.88rem; font-weight: 700; color: var(--verde-oscuro); white-space: nowrap; }
+  .progress-bar {
+    flex: 1;
+    height: 10px;
+    background: #e0e0e0;
+    border-radius: 20px;
+    overflow: hidden;
+  }
+  .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #2ecc71, #3498db);
+    border-radius: 20px;
+    transition: width 0.5s ease;
+    width: 0%;
+  }
+  .score-badge {
+    background: var(--verde);
+    color: white;
+    border-radius: 20px;
+    padding: 4px 14px;
+    font-size: 0.88rem;
+    font-weight: 800;
+  }
+
+  /* ─── SECCIONES ─── */
+  .section {
+    max-width: 860px;
+    margin: 36px auto;
+    padding: 0 16px;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.65rem;
+    font-weight: 700;
+    color: var(--verde-oscuro);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+  .section-title .num {
+    background: linear-gradient(135deg,#2ecc71,#3498db);
+    color: white;
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.2rem; font-weight: 900;
+    flex-shrink: 0;
+  }
+
+  /* ─── TARJETAS INFO ─── */
+  .card {
+    background: white;
+    border-radius: 18px;
+    padding: 26px 28px;
+    box-shadow: var(--sombra);
+    margin-bottom: 22px;
+    border-left: 5px solid var(--verde);
+    animation: fadeIn 0.6s ease;
+  }
+  .card.azul { border-left-color: var(--azul); }
+  .card.morado { border-left-color: var(--morado); }
+  .card.naranja { border-left-color: var(--naranja); }
+  .card h3 { font-size: 1.15rem; font-weight: 800; margin-bottom: 10px; }
+  .card p, .card li { font-size: 0.97rem; line-height: 1.7; }
+  .card ul { padding-left: 20px; }
+  .card ul li { margin-bottom: 5px; }
+
+  /* ─── INFOGRAFÍA ─── */
+  .infografia {
+    background: white;
+    border-radius: 22px;
+    padding: 30px 24px;
+    box-shadow: var(--sombra);
+    margin-bottom: 26px;
+  }
+  .infografia h3 {
+    text-align: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.35rem;
+    color: var(--gris);
+    margin-bottom: 24px;
+  }
+  .infografia-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 16px;
+  }
+  .infografia-item {
+    background: linear-gradient(135deg, #f0fdf5, #e8f4fd);
+    border-radius: 16px;
+    padding: 20px 14px;
+    text-align: center;
+    transition: transform 0.25s;
+    cursor: default;
+  }
+  .infografia-item:hover { transform: translateY(-4px); }
+  .infografia-item .ico { font-size: 2.4rem; display: block; margin-bottom: 8px; }
+  .infografia-item strong { font-size: 0.9rem; font-weight: 800; display: block; margin-bottom: 4px; color: var(--gris); }
+  .infografia-item span { font-size: 0.78rem; color: #666; line-height: 1.4; }
+
+  /* ─── TIPOS DE AUTOCUIDADO – rueda ─── */
+  .wheel-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    justify-content: center;
+    margin-bottom: 26px;
+  }
+  .wheel-item {
+    flex: 1 1 170px;
+    max-width: 200px;
+    border-radius: 18px;
+    padding: 22px 16px;
+    text-align: center;
+    color: white;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 4px 18px rgba(0,0,0,0.12);
+  }
+  .wheel-item:hover { transform: scale(1.06); box-shadow: 0 8px 28px rgba(0,0,0,0.18); }
+  .wheel-item .wico { font-size: 2.2rem; display: block; margin-bottom: 8px; }
+  .wheel-item .wtitle { font-size: 1rem; font-weight: 800; display: block; }
+  .wheel-item .wdesc { font-size: 0.78rem; margin-top: 6px; opacity: 0.9; display: none; }
+  .wheel-item.open .wdesc { display: block; }
+  .w1 { background: linear-gradient(135deg,#2ecc71,#1abc9c); }
+  .w2 { background: linear-gradient(135deg,#3498db,#2980b9); }
+  .w3 { background: linear-gradient(135deg,#9b59b6,#8e44ad); }
+  .w4 { background: linear-gradient(135deg,#e67e22,#d35400); }
+  .w5 { background: linear-gradient(135deg,#e74c3c,#c0392b); }
+  .w6 { background: linear-gradient(135deg,#f39c12,#e67e22); }
+
+  /* ─── AUDIO PLAYER ─── */
+  .audio-block {
+    background: linear-gradient(135deg,#1a9e52,#2ecc71);
+    border-radius: 18px;
+    padding: 24px 28px;
+    color: white;
+    margin-bottom: 26px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  .audio-icon { font-size: 2.8rem; }
+  .audio-text h4 { font-size: 1.1rem; font-weight: 800; }
+  .audio-text p { font-size: 0.88rem; opacity: 0.9; margin-top: 4px; }
+  .audio-btn {
+    margin-top: 10px;
+    background: white;
+    color: var(--verde-oscuro);
+    border: none;
+    border-radius: 30px;
+    padding: 9px 22px;
+    font-size: 0.9rem;
+    font-weight: 800;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .audio-btn:hover { background: #eafaf1; transform: scale(1.04); }
+
+  /* ─── QUIZZES ─── */
+  .quiz-box {
+    background: white;
+    border-radius: 20px;
+    padding: 28px 28px;
+    box-shadow: var(--sombra);
+    margin-bottom: 26px;
+  }
+  .quiz-box .q-num {
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--azul);
+    margin-bottom: 8px;
+  }
+  .quiz-box .q-text {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--gris);
+    margin-bottom: 18px;
+    line-height: 1.5;
+  }
+  .options { display: flex; flex-direction: column; gap: 10px; }
+  .option-btn {
+    background: #f4f8ff;
+    border: 2px solid #dde8f8;
+    border-radius: 12px;
+    padding: 13px 18px;
+    text-align: left;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--gris);
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .option-btn:hover:not(:disabled) { background: #e8f0ff; border-color: var(--azul); transform: translateX(4px); }
+  .option-btn.correct { background: #d4f8e8; border-color: var(--verde); color: #1a7a42; }
+  .option-btn.wrong { background: #fde8e8; border-color: var(--rojo); color: #a02020; }
+  .option-btn:disabled { cursor: default; }
+  .option-btn .opt-letter {
+    width: 28px; height: 28px;
+    background: white;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.82rem;
+    font-weight: 800;
+    border: 1.5px solid #ccd;
+    flex-shrink: 0;
+  }
+  .feedback-msg {
+    margin-top: 14px;
+    padding: 12px 16px;
+    border-radius: 10px;
+    font-size: 0.92rem;
+    font-weight: 600;
+    display: none;
+  }
+  .feedback-msg.show { display: block; }
+  .feedback-msg.ok { background: #d4f8e8; color: #1a7a42; }
+  .feedback-msg.no { background: #fde8e8; color: #a02020; }
+
+  /* ─── DRAG AND DROP ─── */
+  .drag-section { margin-bottom: 26px; }
+  .drag-instructions {
+    background: #fff9e6;
+    border: 2px dashed #f1c40f;
+    border-radius: 14px;
+    padding: 16px 20px;
+    margin-bottom: 18px;
+    font-size: 0.93rem;
+    font-weight: 600;
+    color: #7a6000;
+    text-align: center;
+  }
+  .drag-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-bottom: 18px;
+  }
+  .drag-col h4 {
+    font-size: 0.88rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 8px 14px;
+    border-radius: 10px 10px 0 0;
+    text-align: center;
+    margin-bottom: 0;
+  }
+  .drop-zone {
+    min-height: 120px;
+    border: 2px dashed #ccc;
+    border-radius: 0 0 12px 12px;
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    transition: background 0.2s, border-color 0.2s;
+    background: #fafafa;
+  }
+  .drop-zone.dragover { background: #e8f5ff; border-color: var(--azul); }
+  .draggable-chip {
+    background: white;
+    border: 2px solid #dde;
+    border-radius: 10px;
+    padding: 9px 14px;
+    font-size: 0.88rem;
+    font-weight: 700;
+    cursor: grab;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: transform 0.15s, box-shadow 0.15s;
+    user-select: none;
+  }
+  .draggable-chip:active { cursor: grabbing; transform: scale(1.05); box-shadow: 0 4px 18px rgba(0,0,0,0.15); }
+  .draggable-chip.placed-correct { background: #d4f8e8; border-color: var(--verde); }
+  .draggable-chip.placed-wrong { background: #fde8e8; border-color: var(--rojo); }
+  .chips-pool { display: flex; flex-wrap: wrap; gap: 10px; padding: 16px; background: #f5f5f5; border-radius: 14px; margin-bottom: 14px; min-height: 70px; }
+  .check-drag-btn {
+    background: linear-gradient(135deg,#3498db,#2980b9);
+    color: white;
+    border: none;
+    border-radius: 30px;
+    padding: 12px 28px;
+    font-size: 0.95rem;
+    font-weight: 800;
+    cursor: pointer;
+    transition: transform 0.15s, box-shadow 0.2s;
+    display: block;
+    margin: 0 auto;
+  }
+  .check-drag-btn:hover { transform: scale(1.05); box-shadow: 0 6px 20px rgba(52,152,219,0.35); }
+
+  /* ─── REFLEXIÓN ─── */
+  .reflec-box {
+    background: linear-gradient(135deg,#f3eeff,#e8f0ff);
+    border-radius: 20px;
+    padding: 28px;
+    margin-bottom: 26px;
+    box-shadow: var(--sombra);
+  }
+  .reflec-box h3 { font-family:'Playfair Display',serif; font-size:1.3rem; margin-bottom:14px; }
+  .reflec-box p { font-size:0.95rem; line-height:1.7; margin-bottom:14px; }
+  .reflec-box textarea {
+    width: 100%;
+    border: 2px solid #c8b8ef;
+    border-radius: 12px;
+    padding: 14px 16px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.95rem;
+    color: var(--gris);
+    resize: vertical;
+    min-height: 100px;
+    transition: border-color 0.2s;
+    background: white;
+  }
+  .reflec-box textarea:focus { border-color: var(--morado); outline: none; }
+
+  /* ─── FORMULARIO FINAL ─── */
+  .form-section {
+    background: white;
+    border-radius: 22px;
+    padding: 32px 28px;
+    box-shadow: var(--sombra);
+    margin-bottom: 40px;
+  }
+  .form-section h3 { font-family:'Playfair Display',serif; font-size:1.4rem; margin-bottom:6px; }
+  .form-section p { font-size:0.92rem; color:#666; margin-bottom:20px; }
+  .form-field { margin-bottom: 16px; }
+  .form-field label { display: block; font-size: 0.88rem; font-weight: 700; margin-bottom: 6px; color: var(--gris); }
+  .form-field input {
+    width: 100%;
+    border: 2px solid #dde;
+    border-radius: 10px;
+    padding: 12px 16px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.95rem;
+    transition: border-color 0.2s;
+  }
+  .form-field input:focus { border-color: var(--verde); outline: none; }
+  .submit-btn {
+    width: 100%;
+    background: linear-gradient(135deg,#2ecc71,#1abc9c);
+    color: white;
+    border: none;
+    border-radius: 14px;
+    padding: 16px;
+    font-size: 1.05rem;
+    font-weight: 800;
+    cursor: pointer;
+    transition: transform 0.15s, box-shadow 0.2s;
+    margin-top: 8px;
+  }
+  .submit-btn:hover { transform: scale(1.02); box-shadow: 0 8px 24px rgba(46,204,113,0.35); }
+  .submit-btn:disabled { background: #aaa; cursor: not-allowed; transform: none; box-shadow: none; }
+
+  /* ─── RESULTADO FINAL ─── */
+  #resultado-final {
+    display: none;
+    background: linear-gradient(135deg,#d4f8e8,#e8f4fd);
+    border-radius: 22px;
+    padding: 36px 28px;
+    text-align: center;
+    margin-bottom: 40px;
+    box-shadow: var(--sombra);
+  }
+  #resultado-final .big-emoji { font-size: 4rem; display: block; margin-bottom: 14px; }
+  #resultado-final h2 { font-family:'Playfair Display',serif; font-size:1.7rem; color: var(--verde-oscuro); margin-bottom: 10px; }
+  #resultado-final p { font-size:1rem; color: var(--gris); margin-bottom:8px; }
+  #resultado-final .score-final {
+    display: inline-block;
+    background: white;
+    border: 3px solid var(--verde);
+    border-radius: 16px;
+    padding: 14px 30px;
+    font-size: 1.6rem;
+    font-weight: 900;
+    color: var(--verde-oscuro);
+    margin: 14px 0;
+  }
+
+  /* ─── DIVISOR ─── */
+  .divider {
+    height: 4px;
+    background: linear-gradient(90deg,#2ecc71,#3498db,#9b59b6);
+    border-radius: 4px;
+    margin: 10px 0 28px;
+    max-width: 860px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  @keyframes fadeIn { from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)} }
+  @media(max-width:580px){
+    .drag-grid{grid-template-columns:1fr;}
+    .infografia-grid{grid-template-columns:repeat(2,1fr);}
+    .audio-block{flex-direction:column;}
+  }
+
+  /* tooltip */
+  .tooltip { position:relative; display:inline-block; cursor:help; }
+  .tooltip .tip-text {
+    visibility: hidden;
+    width: 200px;
+    background: #2c3e50;
+    color: #fff;
+    text-align: center;
+    border-radius: 8px;
+    padding: 8px 12px;
+    position: absolute;
+    z-index: 10;
+    bottom: 130%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.8rem;
+    opacity: 0;
+    transition: opacity 0.25s;
+  }
+  .tooltip:hover .tip-text { visibility:visible; opacity:1; }
+
+  /* sending spinner */
+  .spinner { display:inline-block; width:18px; height:18px; border:3px solid rgba(255,255,255,0.4); border-top-color:white; border-radius:50%; animation:spin 0.7s linear infinite; margin-right:8px; vertical-align:middle; }
+  @keyframes spin{to{transform:rotate(360deg)}}
+</style>
+</head>
+<body>
+
+<!-- ═══ HEADER ═══ -->
+<header>
+  <span class="emoji-banner">🌱💚🧠</span>
+  <div class="badge">Primer Semestre de Bachillerato</div>
+  <h1>TEMA 3: Prácticas cotidianas de autocuidado<br>como expresión de una vida reflexiva</h1>
+  <p>Actividad interactiva de aprendizaje · Ámbito: Desarrollo Personal</p>
+</header>
+
+<!-- ═══ BARRA DE PROGRESO ═══ -->
+<div class="progress-bar-wrap">
+  <span>🚀 Progreso</span>
+  <div class="progress-bar"><div class="progress-fill" id="progreso"></div></div>
+  <div class="score-badge">⭐ <span id="puntos">0</span> pts</div>
+</div>
+
+<!-- ════════════════════════════════════════ -->
+<!--  SUBTEMA 1: ¿Qué es el autocuidado?     -->
+<!-- ════════════════════════════════════════ -->
+<div class="section">
+  <div class="section-title"><div class="num">1</div>¿Qué es el autocuidado?</div>
+
+  <!-- AUDIO INTRODUCTORIO -->
+  <div class="audio-block">
+    <div class="audio-icon">🎧</div>
+    <div class="audio-text">
+      <h4>Escucha: ¿Qué significa cuidarte a ti mismo/a?</h4>
+      <p>Antes de leer, cierra los ojos 30 segundos y piensa: ¿qué haces hoy para cuidarte?</p>
+      <button class="audio-btn" id="btn-audio1" onclick="leerTexto('El autocuidado es el conjunto de acciones intencionales que realizamos para preservar y mejorar nuestra salud física, mental, emocional y social. No es egoísmo, es responsabilidad personal. Cuidarte a ti mismo te permite estar bien para cuidar también a los demás. El autocuidado nace de la reflexión: preguntarte qué necesitas y actuar en consecuencia.', 'btn-audio1')">▶ Escuchar introducción</button>
+    </div>
+  </div>
+
+  <!-- TARJETA DEFINICIÓN -->
+  <div class="card">
+    <h3>📖 Definición</h3>
+    <p>El <strong>autocuidado</strong> es el conjunto de acciones <em>intencionales y reflexivas</em> que realizamos para preservar y mejorar nuestra salud física, mental, emocional y social. No es un lujo ni egoísmo: es una <strong>responsabilidad personal</strong> que nos permite vivir con mayor bienestar y ayudar a quienes nos rodean.</p>
+    <br>
+    <p>La Organización Mundial de la Salud (OMS) lo define como la capacidad de individuos, familias y comunidades para promover la salud, prevenir enfermedades y mantener el bienestar, con o sin el apoyo de un profesional de salud.</p>
+  </div>
+
+  <!-- INFOGRAFÍA – PILARES -->
+  <div class="infografia">
+    <h3>🏛️ Los 4 pilares del autocuidado</h3>
+    <div class="infografia-grid">
+      <div class="infografia-item">
+        <span class="ico">💪</span>
+        <strong>Físico</strong>
+        <span>Cuerpo, movimiento, alimentación y descanso</span>
+      </div>
+      <div class="infografia-item">
+        <span class="ico">🧠</span>
+        <strong>Mental</strong>
+        <span>Pensamientos, aprendizaje y salud cognitiva</span>
+      </div>
+      <div class="infografia-item">
+        <span class="ico">❤️</span>
+        <strong>Emocional</strong>
+        <span>Gestión de emociones y autoconocimiento</span>
+      </div>
+      <div class="infografia-item">
+        <span class="ico">🤝</span>
+        <strong>Social</strong>
+        <span>Relaciones sanas y vínculos de calidad</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- QUIZ 1 -->
+  <div class="quiz-box" id="quiz1">
+    <div class="q-num">Actividad 1 · Pregunta 1 de 6</div>
+    <div class="q-text">Según la definición, ¿cuál de las siguientes afirmaciones describe MEJOR el autocuidado?</div>
+    <div class="options">
+      <button class="option-btn" onclick="verificar('quiz1',0,1,'¡Correcto! El autocuidado involucra todas las dimensiones de la persona de forma intencional.',this)"><span class="opt-letter">A</span>Acciones intencionales para el bienestar físico, mental, emocional y social</button>
+      <button class="option-btn" onclick="verificar('quiz1',1,1,'Incorrecto. El autocuidado no se limita solo al ejercicio y la dieta.',this)"><span class="opt-letter">B</span>Solo hacer ejercicio y seguir una dieta balanceada</button>
+      <button class="option-btn" onclick="verificar('quiz1',2,1,'Incorrecto. El autocuidado es una acción reflexiva, no espontánea.',this)"><span class="opt-letter">C</span>Cualquier acción espontánea que hagamos sin pensar</button>
+      <button class="option-btn" onclick="verificar('quiz1',3,1,'Incorrecto. Es una responsabilidad, no una opción de lujo.',this)"><span class="opt-letter">D</span>Un lujo para personas con mucho tiempo libre</button>
+    </div>
+    <div class="feedback-msg" id="fb-quiz1"></div>
+  </div>
+
+</div><!-- /section 1 -->
+<div class="divider"></div>
+
+<!-- ════════════════════════════════════════════════ -->
+<!--  SUBTEMA 2: Tipos y actividades de autocuidado  -->
+<!-- ════════════════════════════════════════════════ -->
+<div class="section">
+  <div class="section-title"><div class="num">2</div>Tipos y actividades de autocuidado</div>
+
+  <!-- AUDIO -->
+  <div class="audio-block" style="background:linear-gradient(135deg,#2980b9,#3498db)">
+    <div class="audio-icon">🎵</div>
+    <div class="audio-text">
+      <h4>Narración: Los 6 tipos de autocuidado</h4>
+      <p>Haz clic para escuchar una breve explicación de cada tipo.</p>
+      <button class="audio-btn" id="btn-audio2" onclick="leerTexto('Existen seis tipos principales de autocuidado. El autocuidado físico incluye actividades como dormir bien, hacer ejercicio, hidratarse y llevar una alimentación nutritiva. El autocuidado emocional implica expresar tus sentimientos, escribir un diario, hacer terapia o practicar la gratitud. El autocuidado mental se refiere a leer, aprender, resolver problemas y desconectarte del ruido digital. El autocuidado social significa cultivar amistades sanas, establecer límites y pedir ayuda cuando lo necesitas. El autocuidado espiritual comprende la meditación, la reflexión personal, el contacto con la naturaleza. Y el autocuidado práctico es organizar tu tiempo, tus finanzas y tu entorno para reducir el estrés.', 'btn-audio2')">▶ Escuchar tipos</button>
+    </div>
+  </div>
+
+  <!-- RUEDA INTERACTIVA – haz click para ver descripción -->
+  <div style="background:white;border-radius:22px;padding:28px 24px;box-shadow:var(--sombra);margin-bottom:26px;">
+    <h3 style="text-align:center;font-family:'Playfair Display',serif;font-size:1.25rem;margin-bottom:6px;">🎡 Rueda del Autocuidado</h3>
+    <p style="text-align:center;font-size:0.88rem;color:#888;margin-bottom:20px;">Haz clic en cada área para ver ejemplos de actividades 👇</p>
+    <div class="wheel-wrap">
+      <div class="wheel-item w1" onclick="toggleWheel(this)">
+        <span class="wico">💪</span>
+        <span class="wtitle">Físico</span>
+        <span class="wdesc">Dormir 7–9 horas · Hidratarte con agua · Hacer ejercicio 30 min/día · Comer frutas y verduras · Tomar aire fresco · Cuidar tu postura</span>
+      </div>
+      <div class="wheel-item w2" onclick="toggleWheel(this)">
+        <span class="wico">❤️‍🔥</span>
+        <span class="wtitle">Emocional</span>
+        <span class="wdesc">Escribir un diario · Expresar tus emociones · Practicar la autocompasión · Ver una película que te guste · Reírte con amigos · Llorar cuando lo necesites</span>
+      </div>
+      <div class="wheel-item w3" onclick="toggleWheel(this)">
+        <span class="wico">🧠</span>
+        <span class="wtitle">Mental</span>
+        <span class="wdesc">Leer libros · Aprender algo nuevo · Desconectarte de redes 1 hora al día · Meditar · Hacer pausas activas · Escuchar podcasts educativos</span>
+      </div>
+      <div class="wheel-item w4" onclick="toggleWheel(this)">
+        <span class="wico">🤝</span>
+        <span class="wtitle">Social</span>
+        <span class="wdesc">Llamar a alguien que aprecias · Poner límites sanos · Participar en actividades grupales · Pedir ayuda · Compartir comidas en familia · Decir "no" cuando es necesario</span>
+      </div>
+      <div class="wheel-item w5" onclick="toggleWheel(this)">
+        <span class="wico">🌿</span>
+        <span class="wtitle">Espiritual</span>
+        <span class="wdesc">Meditar o rezar · Caminar en la naturaleza · Llevar un diario de gratitud · Reflexionar sobre tu propósito · Practicar el mindfulness · Contemplar el silencio</span>
+      </div>
+      <div class="wheel-item w6" onclick="toggleWheel(this)">
+        <span class="wico">📋</span>
+        <span class="wtitle">Práctico</span>
+        <span class="wdesc">Organizar tu espacio de estudio · Planear tu semana · Administrar tu tiempo · Mantener tu cuarto ordenado · Tener un presupuesto básico · Cumplir tus compromisos</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ACTIVIDAD DRAG AND DROP -->
+  <div class="drag-section" style="background:white;border-radius:22px;padding:28px 24px;box-shadow:var(--sombra);">
+    <h3 style="font-family:'Playfair Display',serif;font-size:1.2rem;margin-bottom:14px;">🎯 Actividad 2: Clasifica las actividades</h3>
+    <div class="drag-instructions">
+      📌 Arrastra cada tarjeta al tipo de autocuidado al que corresponde. ¡Puedes hacerlo!
+    </div>
+    <p style="font-size:0.88rem;color:#888;margin-bottom:12px;text-align:center;">Tarjetas disponibles — arrástralas a la columna correcta 👇</p>
+    <div class="chips-pool" id="chips-pool">
+      <div class="draggable-chip" draggable="true" data-tipo="fisico" data-id="c1" id="chip-c1">🏃 Hacer ejercicio</div>
+      <div class="draggable-chip" draggable="true" data-tipo="mental" data-id="c2" id="chip-c2">📚 Leer un libro</div>
+      <div class="draggable-chip" draggable="true" data-tipo="emocional" data-id="c3" id="chip-c3">📓 Escribir un diario</div>
+      <div class="draggable-chip" draggable="true" data-tipo="social" data-id="c4" id="chip-c4">📞 Llamar a un amigo</div>
+      <div class="draggable-chip" draggable="true" data-tipo="espiritual" data-id="c5" id="chip-c5">🌿 Meditar en silencio</div>
+      <div class="draggable-chip" draggable="true" data-tipo="practico" data-id="c6" id="chip-c6">📅 Organizar agenda</div>
+    </div>
+    <div class="drag-grid">
+      <div>
+        <h4 style="background:linear-gradient(135deg,#2ecc71,#1abc9c);color:white;">💪 Físico</h4>
+        <div class="drop-zone" id="drop-fisico" data-tipo="fisico"></div>
+      </div>
+      <div>
+        <h4 style="background:linear-gradient(135deg,#9b59b6,#8e44ad);color:white;">🧠 Mental</h4>
+        <div class="drop-zone" id="drop-mental" data-tipo="mental"></div>
+      </div>
+      <div>
+        <h4 style="background:linear-gradient(135deg,#e74c3c,#c0392b);color:white;">❤️ Emocional</h4>
+        <div class="drop-zone" id="drop-emocional" data-tipo="emocional"></div>
+      </div>
+      <div>
+        <h4 style="background:linear-gradient(135deg,#3498db,#2980b9);color:white;">🤝 Social</h4>
+        <div class="drop-zone" id="drop-social" data-tipo="social"></div>
+      </div>
+      <div>
+        <h4 style="background:linear-gradient(135deg,#27ae60,#1e8449);color:white;">🌿 Espiritual</h4>
+        <div class="drop-zone" id="drop-espiritual" data-tipo="espiritual"></div>
+      </div>
+      <div>
+        <h4 style="background:linear-gradient(135deg,#f39c12,#e67e22);color:white;">📋 Práctico</h4>
+        <div class="drop-zone" id="drop-practico" data-tipo="practico"></div>
+      </div>
+    </div>
+    <button class="check-drag-btn" onclick="revisarDrag()">✅ Verificar clasificación</button>
+    <div id="drag-result" style="margin-top:14px;text-align:center;font-weight:700;font-size:1rem;display:none;"></div>
+  </div>
+
+  <!-- QUIZ 2 -->
+  <div class="quiz-box" id="quiz2" style="margin-top:26px;">
+    <div class="q-num">Actividad 3 · Pregunta 2 de 6</div>
+    <div class="q-text">Valeria tiene mucho estrés por los exámenes. Decide organizar su horario de estudio, ordenar su cuarto y planificar sus tareas con anticipación. ¿Qué tipo de autocuidado está practicando?</div>
+    <div class="options">
+      <button class="option-btn" onclick="verificar('quiz2',0,1,'Incorrecto. El autocuidado físico se relaciona con el cuerpo y el movimiento.',this)"><span class="opt-letter">A</span>Físico</button>
+      <button class="option-btn" onclick="verificar('quiz2',1,1,'Incorrecto. El emocional tiene que ver con la gestión de las emociones.',this)"><span class="opt-letter">B</span>Emocional</button>
+      <button class="option-btn" onclick="verificar('quiz2',2,1,'¡Muy bien! Organizar el tiempo y el entorno es autocuidado práctico.',this)"><span class="opt-letter">C</span>Práctico</button>
+      <button class="option-btn" onclick="verificar('quiz2',3,1,'Incorrecto. El espiritual se relaciona con el sentido y la meditación.',this)"><span class="opt-letter">D</span>Espiritual</button>
+    </div>
+    <div class="feedback-msg" id="fb-quiz2"></div>
+  </div>
+
+  <!-- QUIZ 3 -->
+  <div class="quiz-box" id="quiz3">
+    <div class="q-num">Actividad 3 · Pregunta 3 de 6</div>
+    <div class="q-text">¿Cuántas horas de sueño se recomiendan generalmente para un adolescente como parte del autocuidado físico?</div>
+    <div class="options">
+      <button class="option-btn" onclick="verificar('quiz3',0,1,'Incorrecto. Con 4 horas el cuerpo y la mente no se recuperan adecuadamente.',this)"><span class="opt-letter">A</span>4 a 5 horas</button>
+      <button class="option-btn" onclick="verificar('quiz3',1,1,'¡Correcto! Los adolescentes necesitan entre 8 y 10 horas de sueño para funcionar bien.',this)"><span class="opt-letter">B</span>8 a 10 horas</button>
+      <button class="option-btn" onclick="verificar('quiz3',2,1,'Incorrecto. Dormir 12 o más horas puede ser señal de un problema de salud.',this)"><span class="opt-letter">C</span>12 o más horas</button>
+      <button class="option-btn" onclick="verificar('quiz3',3,1,'Incorrecto. La edad adulta recomienda 7-9 h; los adolescentes necesitan más.',this)"><span class="opt-letter">D</span>Solo 6 horas está bien</button>
+    </div>
+    <div class="feedback-msg" id="fb-quiz3"></div>
+  </div>
+
+</div><!-- /section 2 -->
+<div class="divider"></div>
+
+<!-- ══════════════════════════════════════ -->
+<!--  SUBTEMA 3: Beneficios del autocuidado -->
+<!-- ══════════════════════════════════════ -->
+<div class="section">
+  <div class="section-title"><div class="num">3</div>Beneficios del autocuidado</div>
+
+  <!-- AUDIO -->
+  <div class="audio-block" style="background:linear-gradient(135deg,#8e44ad,#9b59b6)">
+    <div class="audio-icon">🔊</div>
+    <div class="audio-text">
+      <h4>Narración: ¿Por qué vale la pena cuidarte?</h4>
+      <p>Escucha los principales beneficios de incorporar el autocuidado en tu vida.</p>
+      <button class="audio-btn" id="btn-audio3" onclick="leerTexto('Los beneficios del autocuidado son enormes. A nivel físico, mejora tu energía, tu sistema inmunológico y tu calidad de sueño. A nivel emocional, te ayuda a regular mejor tus emociones, reducir la ansiedad y aumentar tu autoestima. A nivel mental, mejora tu concentración, tu memoria y tu rendimiento académico. A nivel social, fortaleces tus relaciones y pones límites sanos. Practicar el autocuidado de forma regular te convierte en una persona más consciente, resiliente y capaz de enfrentar los retos de la vida. No es algo que haces una vez: es una forma de vivir.', 'btn-audio3')">▶ Escuchar beneficios</button>
+    </div>
+  </div>
+
+  <!-- INFOGRAFÍA BENEFICIOS -->
+  <div class="infografia">
+    <h3>✨ Beneficios del autocuidado en 4 dimensiones</h3>
+    <div class="infografia-grid">
+      <div class="infografia-item" style="background:linear-gradient(135deg,#d5f5e3,#a9dfbf)">
+        <span class="ico">💪</span>
+        <strong>Físicos</strong>
+        <span>Más energía · Mejor sueño · Sistema inmune fuerte · Menos enfermedades</span>
+      </div>
+      <div class="infografia-item" style="background:linear-gradient(135deg,#d6eaf8,#aed6f1)">
+        <span class="ico">🧠</span>
+        <strong>Mentales</strong>
+        <span>Mayor concentración · Mejor memoria · Más creatividad · Menos estrés</span>
+      </div>
+      <div class="infografia-item" style="background:linear-gradient(135deg,#e8daef,#d2b4de)">
+        <span class="ico">😊</span>
+        <strong>Emocionales</strong>
+        <span>Más autoestima · Menos ansiedad · Mayor bienestar · Resiliencia</span>
+      </div>
+      <div class="infografia-item" style="background:linear-gradient(135deg,#fdebd0,#f9c897)">
+        <span class="ico">🌟</span>
+        <strong>Sociales</strong>
+        <span>Relaciones más sanas · Mejores límites · Mayor empatía · Más apoyo mutuo</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- TARJETA VIDA REFLEXIVA -->
+  <div class="card morado">
+    <h3>🪞 Autocuidado como vida reflexiva</h3>
+    <p>Una vida reflexiva significa que <strong>te detienes a observarte</strong>: qué sientes, qué necesitas, cómo estás respondiendo al mundo. El autocuidado es la expresión práctica de esa reflexión: no solo piensas en tu bienestar, también <em>actúas en consecuencia</em>.</p>
+    <br>
+    <p>Cuando practicas el autocuidado de forma consciente, te vuelves el <strong>protagonista/a de tu propia historia</strong>, tomas mejores decisiones y construyes una vida con mayor sentido.</p>
+  </div>
+
+  <!-- QUIZ 4 -->
+  <div class="quiz-box" id="quiz4">
+    <div class="q-num">Actividad 4 · Pregunta 4 de 6</div>
+    <div class="q-text">¿Cuál de los siguientes NO es un beneficio del autocuidado regular?</div>
+    <div class="options">
+      <button class="option-btn" onclick="verificar('quiz4',0,1,'Correcto! Acumular estrés sin gestionarlo es justamente lo que el autocuidado busca EVITAR.',this)"><span class="opt-letter">A</span>Acumular más estrés sin gestionarlo</button>
+      <button class="option-btn" onclick="verificar('quiz4',1,1,'Incorrecto. La resiliencia SÍ aumenta con el autocuidado.',this)"><span class="opt-letter">B</span>Mayor resiliencia ante los retos</button>
+      <button class="option-btn" onclick="verificar('quiz4',2,1,'Incorrecto. El rendimiento académico SÍ mejora con el autocuidado.',this)"><span class="opt-letter">C</span>Mejor rendimiento académico</button>
+      <button class="option-btn" onclick="verificar('quiz4',3,1,'Incorrecto. El autocuidado SÍ fortalece el sistema inmune.',this)"><span class="opt-letter">D</span>Fortalecimiento del sistema inmune</button>
+    </div>
+    <div class="feedback-msg" id="fb-quiz4"></div>
+  </div>
+
+  <!-- QUIZ 5 -->
+  <div class="quiz-box" id="quiz5">
+    <div class="q-num">Actividad 4 · Pregunta 5 de 6</div>
+    <div class="q-text">Una "vida reflexiva" en el contexto del autocuidado significa que:</div>
+    <div class="options">
+      <button class="option-btn" onclick="verificar('quiz5',0,1,'Incorrecto. La vida reflexiva no implica aislamiento.',this)"><span class="opt-letter">A</span>Te aíslas de los demás para pensar solo/a</button>
+      <button class="option-btn" onclick="verificar('quiz5',1,1,'¡Exacto! Observarte, identificar tus necesidades y actuar en consecuencia es vivir reflexivamente.',this)"><span class="opt-letter">B</span>Te observas, identificas tus necesidades y actúas en consecuencia</button>
+      <button class="option-btn" onclick="verificar('quiz5',2,1,'Incorrecto. Vivir reflexivamente no significa solo leer libros de filosofía.',this)"><span class="opt-letter">C</span>Lees libros de filosofía todos los días</button>
+      <button class="option-btn" onclick="verificar('quiz5',3,1,'Incorrecto. Ignorar emociones es lo opuesto a vivir reflexivamente.',this)"><span class="opt-letter">D</span>Ignoras tus emociones para ser más racional</button>
+    </div>
+    <div class="feedback-msg" id="fb-quiz5"></div>
+  </div>
+
+  <!-- QUIZ 6 -->
+  <div class="quiz-box" id="quiz6">
+    <div class="q-num">Actividad 4 · Pregunta 6 de 6</div>
+    <div class="q-text">¿Cuál beneficio del autocuidado se relaciona directamente con mejorar el rendimiento escolar?</div>
+    <div class="options">
+      <button class="option-btn" onclick="verificar('quiz6',0,1,'¡Bien! Mejor concentración y memoria son beneficios mentales que impactan directamente el desempeño escolar.',this)"><span class="opt-letter">A</span>Beneficio mental: mejora la concentración y la memoria</button>
+      <button class="option-btn" onclick="verificar('quiz6',1,1,'Incorrecto. Aunque es importante, el beneficio físico no es el más directo al desempeño escolar.',this)"><span class="opt-letter">B</span>Beneficio físico: menor riesgo de enfermedades</button>
+      <button class="option-btn" onclick="verificar('quiz6',2,1,'Incorrecto. El beneficio social se relaciona más con las relaciones interpersonales.',this)"><span class="opt-letter">C</span>Beneficio social: tener más amigos</button>
+      <button class="option-btn" onclick="verificar('quiz6',3,1,'Incorrecto. Las actividades de ocio en sí no mejoran directamente el rendimiento académico.',this)"><span class="opt-letter">D</span>Ver más series y películas de entretenimiento</button>
+    </div>
+    <div class="feedback-msg" id="fb-quiz6"></div>
+  </div>
+
+</div><!-- /section 3 -->
+<div class="divider"></div>
+
+<!-- ════════════════════════════════════ -->
+<!--  REFLEXIÓN PERSONAL                -->
+<!-- ════════════════════════════════════ -->
+<div class="section">
+  <div class="section-title"><div class="num">✍️</div>Reflexión personal</div>
+
+  <div class="reflec-box">
+    <h3>🪴 Mi plan de autocuidado personal</h3>
+    <p>Responde las siguientes preguntas con honestidad. Tus respuestas son parte de tu evaluación y serán enviadas al docente.</p>
+
+    <p><strong>1. ¿Cuál es la actividad de autocuidado que ya practicas con más frecuencia y por qué crees que te beneficia?</strong></p>
+    <textarea id="r1" placeholder="Escribe aquí tu respuesta (mínimo 2 líneas)..."></textarea>
+
+    <br><br>
+    <p><strong>2. ¿En qué tipo de autocuidado necesitas mejorar? ¿Qué harías concretamente esta semana para empezar?</strong></p>
+    <textarea id="r2" placeholder="Sé específico/a: ¿qué día, a qué hora, qué actividad?..."></textarea>
+
+    <br><br>
+    <p><strong>3. ¿Cómo conectas el autocuidado con vivir de forma más reflexiva en tu vida cotidiana?</strong></p>
+    <textarea id="r3" placeholder="Piensa en ejemplos de tu propia vida..."></textarea>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════ -->
+<!--  FORMULARIO DE ENVÍO               -->
+<!-- ════════════════════════════════════ -->
+<div class="section">
+  <div class="form-section" id="form-envio">
+    <h3>📬 Envía tus resultados</h3>
+    <p>Completa tus datos y haz clic en <strong>"Enviar actividad"</strong>. Tus respuestas y puntuación se enviarán automáticamente al correo del docente.</p>
+
+    <div class="form-field">
+      <label>👤 Nombre completo *</label>
+      <input type="text" id="nombre" placeholder="Ej. María González López">
+    </div>
+    <div class="form-field">
+      <label>📧 Tu correo electrónico *</label>
+      <input type="email" id="correo-alumno" placeholder="tu.correo@ejemplo.com">
+    </div>
+    <div class="form-field">
+      <label>🏫 Grupo / Sección</label>
+      <input type="text" id="grupo" placeholder="Ej. 1-A, 1B, Primer Semestre...">
+    </div>
+
+    <button class="submit-btn" id="btn-enviar" onclick="enviarResultados()">
+      📤 Enviar actividad al docente
+    </button>
+  </div>
+
+  <!-- RESULTADO FINAL -->
+  <div id="resultado-final">
+    <span class="big-emoji" id="emoji-result">🎉</span>
+    <h2 id="titulo-result">¡Actividad completada!</h2>
+    <p id="msg-result">Tus resultados han sido enviados exitosamente.</p>
+    <div class="score-final">⭐ <span id="score-final-num">0</span> / 60 puntos</div>
+    <p style="margin-top:12px;font-size:0.9rem;color:#555;">Un correo con tus resultados fue enviado a <strong>astridfernandar648@gmail.com</strong></p>
+    <p style="font-size:0.88rem;color:#888;margin-top:8px;">¡Sigue practicando el autocuidado cada día! 💚</p>
+  </div>
+</div>
+
+<!-- ─── FOOTER ─── -->
+<footer style="background:#2c3e50;color:#aaa;text-align:center;padding:22px 16px;font-size:0.82rem;margin-top:10px;">
+  <p>🌱 Tema 3: Prácticas cotidianas de autocuidado como expresión de una vida reflexiva</p>
+  <p style="margin-top:6px;">Actividad interactiva · Primer Semestre de Bachillerato · Desarrollo Personal</p>
+  <p style="margin-top:6px;color:#666;">Resultados enviados a: astridfernandar648@gmail.com</p>
+</footer>
+
+<!-- ─── SCRIPTS ─── -->
+<script>
+  // ── ESTADO GLOBAL ──
+  let puntosTotal = 0;
+  const maxPuntos = 60; // 6 preguntas × 10 pts cada una
+  const respuestasQuiz = {};
+  let dragScore = 0;
+
+  // ── SÍNTESIS DE VOZ ──
+  function leerTexto(texto, btnId) {
+    if ('speechSynthesis' in window) {
+      window.speechSynthesis.cancel();
+      const utt = new SpeechSynthesisUtterance(texto);
+      utt.lang = 'es-MX';
+      utt.rate = 0.92;
+      utt.pitch = 1.05;
+      const btn = document.getElementById(btnId);
+      btn.textContent = '⏹ Detener';
+      utt.onend = () => { btn.textContent = '▶ Reproducir de nuevo'; };
+      window.speechSynthesis.speak(utt);
+      btn.onclick = () => {
+        window.speechSynthesis.cancel();
+        btn.textContent = '▶ Reproducir de nuevo';
+      };
+    } else {
+      alert('Tu navegador no soporta síntesis de voz. Intenta con Chrome o Edge.');
+    }
+  }
+
+  // ── RUEDA INTERACTIVA ──
+  function toggleWheel(el) {
+    const isOpen = el.classList.contains('open');
+    document.querySelectorAll('.wheel-item').forEach(w => w.classList.remove('open'));
+    if (!isOpen) el.classList.add('open');
+  }
+
+  // ── QUIZ VERIFICACIÓN ──
+  function verificar(quizId, idx, correctIdx, feedback, btn) {
+    if (respuestasQuiz[quizId]) return; // ya respondida
+    respuestasQuiz[quizId] = idx;
+
+    const quiz = document.getElementById(quizId);
+    const btns = quiz.querySelectorAll('.option-btn');
+    btns.forEach(b => b.disabled = true);
+
+    const fbEl = document.getElementById('fb-' + quizId);
+    const correcto = (idx === correctIdx);
+
+    btns[correctIdx].classList.add('correct');
+    if (!correcto) btn.classList.add('wrong');
+
+    fbEl.textContent = (correcto ? '✅ ' : '❌ ') + feedback;
+    fbEl.className = 'feedback-msg show ' + (correcto ? 'ok' : 'no');
+
+    if (correcto) {
+      puntosTotal += 10;
+      actualizarPuntos();
+    }
+  }
+
+  function actualizarPuntos() {
+    document.getElementById('puntos').textContent = puntosTotal;
+    const pct = Math.round((puntosTotal / maxPuntos) * 100);
+    document.getElementById('progreso').style.width = pct + '%';
+  }
+
+  // ── DRAG AND DROP ──
+  let draggedChip = null;
+
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.draggable-chip').forEach(chip => {
+      chip.addEventListener('dragstart', e => {
+        draggedChip = chip;
+        setTimeout(() => chip.style.opacity = '0.4', 0);
+      });
+      chip.addEventListener('dragend', () => {
+        chip.style.opacity = '1';
+        draggedChip = null;
+      });
+    });
+
+    document.querySelectorAll('.drop-zone').forEach(zone => {
+      zone.addEventListener('dragover', e => {
+        e.preventDefault();
+        zone.classList.add('dragover');
+      });
+      zone.addEventListener('dragleave', () => zone.classList.remove('dragover'));
+      zone.addEventListener('drop', e => {
+        e.preventDefault();
+        zone.classList.remove('dragover');
+        if (draggedChip) zone.appendChild(draggedChip);
+      });
+    });
+
+    // pool también acepta chips devueltos
+    const pool = document.getElementById('chips-pool');
+    pool.addEventListener('dragover', e => { e.preventDefault(); pool.classList.add('dragover'); });
+    pool.addEventListener('dragleave', () => pool.classList.remove('dragover'));
+    pool.addEventListener('drop', e => {
+      e.preventDefault();
+      pool.classList.remove('dragover');
+      if (draggedChip) pool.appendChild(draggedChip);
+    });
+  });
+
+  function revisarDrag() {
+    let correctas = 0;
+    document.querySelectorAll('.drop-zone').forEach(zone => {
+      const tipo = zone.dataset.tipo;
+      zone.querySelectorAll('.draggable-chip').forEach(chip => {
+        chip.classList.remove('placed-correct','placed-wrong');
+        if (chip.dataset.tipo === tipo) {
+          chip.classList.add('placed-correct');
+          correctas++;
+        } else {
+          chip.classList.add('placed-wrong');
+        }
+      });
+    });
+
+    const resEl = document.getElementById('drag-result');
+    resEl.style.display = 'block';
+    resEl.style.color = correctas === 6 ? '#1a7a42' : '#a05000';
+    resEl.textContent = `${correctas === 6 ? '🎉' : '📝'} ${correctas} de 6 actividades correctamente clasificadas. ${correctas < 6 ? 'Revisa las marcadas en rojo y vuelve a intentarlo.' : '¡Perfecto!'}`;
+
+    dragScore = correctas;
+  }
+
+  // ── ENVÍO DE RESULTADOS via EmailJS ──
+  async function enviarResultados() {
+    const nombre = document.getElementById('nombre').value.trim();
+    const correoAlumno = document.getElementById('correo-alumno').value.trim();
+    const grupo = document.getElementById('grupo').value.trim();
+    const r1 = document.getElementById('r1').value.trim();
+    const r2 = document.getElementById('r2').value.trim();
+    const r3 = document.getElementById('r3').value.trim();
+
+    if (!nombre || !correoAlumno) {
+      alert('⚠️ Por favor, ingresa tu nombre y correo electrónico.');
+      return;
+    }
+    if (!r1 || !r2 || !r3) {
+      alert('⚠️ Por favor, completa las 3 preguntas de reflexión antes de enviar.');
+      return;
+    }
+
+    const btn = document.getElementById('btn-enviar');
+    btn.disabled = true;
+    btn.innerHTML = '<span class="spinner"></span>Enviando...';
+
+    // ── Construir resumen ──
+    const quizNombres = {
+      quiz1:'P1 – Definición de autocuidado',
+      quiz2:'P2 – Caso Valeria (tipo práctico)',
+      quiz3:'P3 – Horas de sueño recomendadas',
+      quiz4:'P4 – No es beneficio del autocuidado',
+      quiz5:'P5 – Vida reflexiva',
+      quiz6:'P6 – Beneficio que mejora rendimiento escolar',
+    };
+    let quizResumen = '';
+    for (const [qid, qn] of Object.entries(quizNombres)) {
+      const resp = respuestasQuiz[qid] !== undefined ? `Opción ${['A','B','C','D'][respuestasQuiz[qid]]}` : 'Sin responder';
+      quizResumen += `${qn}: ${resp}\n`;
+    }
+
+    const cuerpo = `
+📋 ACTIVIDAD INTERACTIVA – TEMA 3: AUTOCUIDADO
+────────────────────────────────────────────────
+👤 Estudiante: ${nombre}
+📧 Correo: ${correoAlumno}
+🏫 Grupo: ${grupo || 'No especificado'}
+⭐ Puntuación quiz: ${puntosTotal} / 60 pts
+🎯 Drag & drop: ${dragScore} / 6 actividades
+
+RESPUESTAS DEL QUIZ:
+${quizResumen}
+
+REFLEXIONES PERSONALES:
+1. ${r1}
+
+2. ${r2}
+
+3. ${r3}
+────────────────────────────────────────────────
+Enviado desde la actividad interactiva de autocuidado.
+    `.trim();
+
+    // ── EmailJS (servicio gratuito) ──
+    try {
+      const emailJSPayload = {
+        service_id: 'service_autocuidado',
+        template_id: 'template_autocuidado',
+        user_id: 'public_key_placeholder',
+        template_params: {
+          to_email: 'astridfernandar648@gmail.com',
+          from_name: nombre,
+          from_email: correoAlumno,
+          subject: `📚 Actividad Tema 3 – Autocuidado – ${nombre}`,
+          message: cuerpo,
+          puntuacion: `${puntosTotal}/60`,
+          grupo: grupo || 'No especificado'
+        }
+      };
+
+      // Intentar con EmailJS si está disponible
+      if (typeof emailjs !== 'undefined') {
+        await emailjs.send(
+          emailJSPayload.service_id,
+          emailJSPayload.template_id,
+          emailJSPayload.template_params
+        );
+      } else {
+        // Fallback: mailto link
+        const subject = encodeURIComponent(`📚 Actividad Tema 3 Autocuidado – ${nombre}`);
+        const body = encodeURIComponent(cuerpo);
+        window.open(`mailto:astridfernandar648@gmail.com?subject=${subject}&body=${body}`);
+      }
+
+      mostrarResultadoFinal(nombre);
+    } catch (err) {
+      // Fallback automático a mailto
+      const subject = encodeURIComponent(`📚 Actividad Tema 3 Autocuidado – ${nombre}`);
+      const body = encodeURIComponent(cuerpo);
+      window.open(`mailto:astridfernandar648@gmail.com?subject=${subject}&body=${body}`);
+      mostrarResultadoFinal(nombre);
+    }
+  }
+
+  function mostrarResultadoFinal(nombre) {
+    document.getElementById('form-envio').style.display = 'none';
+    const resultDiv = document.getElementById('resultado-final');
+    resultDiv.style.display = 'block';
+    resultDiv.scrollIntoView({ behavior: 'smooth' });
+
+    document.getElementById('score-final-num').textContent = puntosTotal;
+
+    let emoji = '😊', titulo = '¡Buen trabajo!';
+    if (puntosTotal >= 50) { emoji = '🏆'; titulo = '¡Excelente desempeño!'; }
+    else if (puntosTotal >= 30) { emoji = '👏'; titulo = '¡Bien hecho!'; }
+    else { emoji = '📚'; titulo = 'Sigue aprendiendo'; }
+
+    document.getElementById('emoji-result').textContent = emoji;
+    document.getElementById('titulo-result').textContent = titulo;
+    document.getElementById('msg-result').textContent =
+      `${nombre}, tu actividad del Tema 3 fue enviada al correo del docente. ¡Recuerda poner en práctica el autocuidado cada día!`;
+    document.getElementById('progreso').style.width = '100%';
+  }
+</script>
+
+<!-- EmailJS CDN (envío real de correo) -->
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script>
+  // Inicializar EmailJS — el docente puede crear cuenta gratuita en emailjs.com
+  // y reemplazar 'TU_PUBLIC_KEY' con su clave real
+  try {
+    emailjs.init({ publicKey: 'TU_PUBLIC_KEY_AQUI' });
+  } catch(e) { /* se usará fallback mailto */ }
+</script>
+
+</body>
+</html>

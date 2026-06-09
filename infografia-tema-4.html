@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="es" id="exe-page-mq5s3053-6iw4tz51k">
+<head>
+<meta charset="utf-8">
+<meta name="generator" content="eXeLearning v4.0.0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="license" type="text/html" href="https://creativecommons.org/licenses/by-sa/4.0/">
+<title>Actividad Tema 3 | Diseño de Ambientes: Salud Mental</title>
+<link rel="icon" type="image/x-icon" href="../libs/favicon.ico">
+<script>document.querySelector("html").classList.add("js");</script><script src="../libs/jquery/jquery.min.js"> </script><script src="../libs/common_i18n.js"> </script><script src="../libs/common.js"> </script><script src="../libs/exe_export.js"> </script><script src="../libs/bootstrap/bootstrap.bundle.min.js"> </script><link rel="stylesheet" href="../libs/bootstrap/bootstrap.min.css">
+<script src="../idevices/text/text.js"></script><link rel="stylesheet" href="../idevices/text/text.css">
+<link rel="stylesheet" href="../content/css/base.css"><script src="../theme/style.js"> </script><link rel="stylesheet" href="../theme/style.css">
+</head>
+<body class="exe-export exe-web-site">
+<script>document.body.className+=" js"</script>
+<div class="exe-content exe-export pre-js siteNav-hidden"><a href="#page-mq5s3053-6iw4tz51k" id="skipNav">Skip to content</a> <nav id="siteNav">
+<ul>
+<li class="current-page-parent"> <a href="../index.html" class="main-node daddy">PORTADA</a>
+<ul class="other-section">
+<li> <a href="../html/autores.html" class="no-ch">Autores</a>
+</li>
+<li> <a href="../html/indice.html" class="no-ch">INDICE</a>
+</li>
+<li> <a href="../html/bienvenida.html" class="no-ch">BIENVENIDA</a>
+</li>
+<li> <a href="../html/bloque-1.html" class="daddy">BLOQUE 1</a>
+<ul class="other-section">
+<li> <a href="../html/actividad-bloque-1.html" class="no-ch">Actividad Bloque 1</a>
+</li>
+</ul>
+</li>
+<li class="current-page-parent"> <a href="../html/bloque-2.html" class="daddy">BLOQUE 2</a>
+<ul class="other-section">
+<li class="current-page-parent"> <a href="../html/infografia-tema-3.html" class="daddy">Infografia Tema 3</a>
+<ul class="other-section">
+<li class="active"> <a href="../html/actividad-tema-3.html" class="active no-ch">Actividad Tema 3</a>
+</li>
+</ul>
+</li>
+<li> <a href="../html/infografia-tema-4.html" class="daddy">Infografía Tema 4</a>
+<ul class="other-section">
+<li> <a href="../html/actividad-tema-4.html" class="no-ch">Actividad Tema 4</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li> <a href="../html/bloque-3.html" class="no-ch">BLOQUE 3</a>
+</li>
+<li> <a href="../html/actividad-complementaria.html" class="no-ch">Actividad Complementaria</a>
+</li>
+</ul>
+</li>
+<li> <a href="../html/video-de-despedida.html" class="no-ch">Video de despedida</a>
+</li>
+</ul>
+</nav><main id="page-mq5s3053-6iw4tz51k" class="page"> 
+<header class="main-header">
+<div class="package-header"><p class="package-title">Diseño de Ambientes: Salud Mental</p></div>
+<div class="page-header"><h1 class="page-title">Actividad Tema 3</h1></div>
+</header><div id="page-content-page-mq5s3053-6iw4tz51k" class="page-content">
+<article id="block-1779986052589-rwwfz1xuk" class="box">
+<header class="box-head no-icon">
+<h1 class="box-title">Texto</h1>
+<button class="box-toggle box-toggle-on" title="Toggle content">
+<span>Toggle content</span>
+</button></header>
+<div class="box-content">
+<div id="idevice-1779986052586-upzdbmftp" class="idevice_node text" data-idevice-path="../idevices/text/" data-idevice-type="text" data-idevice-component-type="json" data-idevice-json-data="{&quot;ideviceId&quot;:&quot;idevice-1779986052586-upzdbmftp&quot;}">
+<div class="exe-text-template">
+    <p><iframe width="100" height="600" style="width: 100%; height: 600px; border: 1px solid #ccc;" src="../content/resources/autocuidado_tema3.html" data-mce-html="true"></iframe><br /><!-- ─── SCRIPTS ─── -->
+<script>
+  // ── ESTADO GLOBAL ──
+  let puntosTotal = 0;
+  const maxPuntos = 60; // 6 preguntas × 10 pts cada una
+  const respuestasQuiz = {};
+  let dragScore = 0;
+
+  // ── SÍNTESIS DE VOZ ──
+  function leerTexto(texto, btnId) {
+    if ('speechSynthesis' in window) {
+      window.speechSynthesis.cancel();
+      const utt = new SpeechSynthesisUtterance(texto);
+      utt.lang = 'es-MX';
+      utt.rate = 0.92;
+      utt.pitch = 1.05;
+      const btn = document.getElementById(btnId);
+      btn.textContent = '⏹ Detener';
+      utt.onend = () => { btn.textContent = '▶ Reproducir de nuevo'; };
+      window.speechSynthesis.speak(utt);
+      btn.onclick = () => {
+        window.speechSynthesis.cancel();
+        btn.textContent = '▶ Reproducir de nuevo';
+      };
+    } else {
+      alert('Tu navegador no soporta síntesis de voz. Intenta con Chrome o Edge.');
+    }
+  }
+
+  // ── RUEDA INTERACTIVA ──
+  function toggleWheel(el) {
+    const isOpen = el.classList.contains('open');
+    document.querySelectorAll('.wheel-item').forEach(w => w.classList.remove('open'));
+    if (!isOpen) el.classList.add('open');
+  }
+
+  // ── QUIZ VERIFICACIÓN ──
+  function verificar(quizId, idx, correctIdx, feedback, btn) {
+    if (respuestasQuiz[quizId]) return; // ya respondida
+    respuestasQuiz[quizId] = idx;
+
+    const quiz = document.getElementById(quizId);
+    const btns = quiz.querySelectorAll('.option-btn');
+    btns.forEach(b => b.disabled = true);
+
+    const fbEl = document.getElementById('fb-' + quizId);
+    const correcto = (idx === correctIdx);
+
+    btns[correctIdx].classList.add('correct');
+    if (!correcto) btn.classList.add('wrong');
+
+    fbEl.textContent = (correcto ? '✅ ' : '❌ ') + feedback;
+    fbEl.className = 'feedback-msg show ' + (correcto ? 'ok' : 'no');
+
+    if (correcto) {
+      puntosTotal += 10;
+      actualizarPuntos();
+    }
+  }
+
+  function actualizarPuntos() {
+    document.getElementById('puntos').textContent = puntosTotal;
+    const pct = Math.round((puntosTotal / maxPuntos) * 100);
+    document.getElementById('progreso').style.width = pct + '%';
+  }
+
+  // ── DRAG AND DROP ──
+  let draggedChip = null;
+
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.draggable-chip').forEach(chip => {
+      chip.addEventListener('dragstart', e => {
+        draggedChip = chip;
+        setTimeout(() => chip.style.opacity = '0.4', 0);
+      });
+      chip.addEventListener('dragend', () => {
+        chip.style.opacity = '1';
+        draggedChip = null;
+      });
+    });
+
+    document.querySelectorAll('.drop-zone').forEach(zone => {
+      zone.addEventListener('dragover', e => {
+        e.preventDefault();
+        zone.classList.add('dragover');
+      });
+      zone.addEventListener('dragleave', () => zone.classList.remove('dragover'));
+      zone.addEventListener('drop', e => {
+        e.preventDefault();
+        zone.classList.remove('dragover');
+        if (draggedChip) zone.appendChild(draggedChip);
+      });
+    });
+
+    // pool también acepta chips devueltos
+    const pool = document.getElementById('chips-pool');
+    pool.addEventListener('dragover', e => { e.preventDefault(); pool.classList.add('dragover'); });
+    pool.addEventListener('dragleave', () => pool.classList.remove('dragover'));
+    pool.addEventListener('drop', e => {
+      e.preventDefault();
+      pool.classList.remove('dragover');
+      if (draggedChip) pool.appendChild(draggedChip);
+    });
+  });
+
+  function revisarDrag() {
+    let correctas = 0;
+    document.querySelectorAll('.drop-zone').forEach(zone => {
+      const tipo = zone.dataset.tipo;
+      zone.querySelectorAll('.draggable-chip').forEach(chip => {
+        chip.classList.remove('placed-correct','placed-wrong');
+        if (chip.dataset.tipo === tipo) {
+          chip.classList.add('placed-correct');
+          correctas++;
+        } else {
+          chip.classList.add('placed-wrong');
+        }
+      });
+    });
+
+    const resEl = document.getElementById('drag-result');
+    resEl.style.display = 'block';
+    resEl.style.color = correctas === 6 ? '#1a7a42' : '#a05000';
+    resEl.textContent = `${correctas === 6 ? '🎉' : '📝'} ${correctas} de 6 actividades correctamente clasificadas. ${correctas < 6 ? 'Revisa las marcadas en rojo y vuelve a intentarlo.' : '¡Perfecto!'}`;
+
+    dragScore = correctas;
+  }
+
+  // ── ENVÍO DE RESULTADOS via EmailJS ──
+  async function enviarResultados() {
+    const nombre = document.getElementById('nombre').value.trim();
+    const correoAlumno = document.getElementById('correo-alumno').value.trim();
+    const grupo = document.getElementById('grupo').value.trim();
+    const r1 = document.getElementById('r1').value.trim();
+    const r2 = document.getElementById('r2').value.trim();
+    const r3 = document.getElementById('r3').value.trim();
+
+    if (!nombre || !correoAlumno) {
+      alert('⚠️ Por favor, ingresa tu nombre y correo electrónico.');
+      return;
+    }
+    if (!r1 || !r2 || !r3) {
+      alert('⚠️ Por favor, completa las 3 preguntas de reflexión antes de enviar.');
+      return;
+    }
+
+    const btn = document.getElementById('btn-enviar');
+    btn.disabled = true;
+    btn.innerHTML = '<span class="spinner"></span>Enviando...';
+
+    // ── Construir resumen ──
+    const quizNombres = {
+      quiz1:'P1 – Definición de autocuidado',
+      quiz2:'P2 – Caso Valeria (tipo práctico)',
+      quiz3:'P3 – Horas de sueño recomendadas',
+      quiz4:'P4 – No es beneficio del autocuidado',
+      quiz5:'P5 – Vida reflexiva',
+      quiz6:'P6 – Beneficio que mejora rendimiento escolar',
+    };
+    let quizResumen = '';
+    for (const [qid, qn] of Object.entries(quizNombres)) {
+      const resp = respuestasQuiz[qid] !== undefined ? `Opción ${['A','B','C','D'][respuestasQuiz[qid]]}` : 'Sin responder';
+      quizResumen += `${qn}: ${resp}\n`;
+    }
+
+    const cuerpo = `
+📋 ACTIVIDAD INTERACTIVA – TEMA 3: AUTOCUIDADO
+────────────────────────────────────────────────
+👤 Estudiante: ${nombre}
+📧 Correo: ${correoAlumno}
+🏫 Grupo: ${grupo || 'No especificado'}
+⭐ Puntuación quiz: ${puntosTotal} / 60 pts
+🎯 Drag & drop: ${dragScore} / 6 actividades
+
+RESPUESTAS DEL QUIZ:
+${quizResumen}
+
+REFLEXIONES PERSONALES:
+1. ${r1}
+
+2. ${r2}
+
+3. ${r3}
+────────────────────────────────────────────────
+Enviado desde la actividad interactiva de autocuidado.
+    `.trim();
+
+    // ── EmailJS (servicio gratuito) ──
+    try {
+      const emailJSPayload = {
+        service_id: 'service_autocuidado',
+        template_id: 'template_autocuidado',
+        user_id: 'public_key_placeholder',
+        template_params: {
+          to_email: 'astridfernandar648@gmail.com',
+          from_name: nombre,
+          from_email: correoAlumno,
+          subject: `📚 Actividad Tema 3 – Autocuidado – ${nombre}`,
+          message: cuerpo,
+          puntuacion: `${puntosTotal}/60`,
+          grupo: grupo || 'No especificado'
+        }
+      };
+
+      // Intentar con EmailJS si está disponible
+      if (typeof emailjs !== 'undefined') {
+        await emailjs.send(
+          emailJSPayload.service_id,
+          emailJSPayload.template_id,
+          emailJSPayload.template_params
+        );
+      } else {
+        // Fallback: mailto link
+        const subject = encodeURIComponent(`📚 Actividad Tema 3 Autocuidado – ${nombre}`);
+        const body = encodeURIComponent(cuerpo);
+        window.open(`mailto:astridfernandar648@gmail.com?subject=${subject}&body=${body}`);
+      }
+
+      mostrarResultadoFinal(nombre);
+    } catch (err) {
+      // Fallback automático a mailto
+      const subject = encodeURIComponent(`📚 Actividad Tema 3 Autocuidado – ${nombre}`);
+      const body = encodeURIComponent(cuerpo);
+      window.open(`mailto:astridfernandar648@gmail.com?subject=${subject}&body=${body}`);
+      mostrarResultadoFinal(nombre);
+    }
+  }
+
+  function mostrarResultadoFinal(nombre) {
+    document.getElementById('form-envio').style.display = 'none';
+    const resultDiv = document.getElementById('resultado-final');
+    resultDiv.style.display = 'block';
+    resultDiv.scrollIntoView({ behavior: 'smooth' });
+
+    document.getElementById('score-final-num').textContent = puntosTotal;
+
+    let emoji = '😊', titulo = '¡Buen trabajo!';
+    if (puntosTotal >= 50) { emoji = '🏆'; titulo = '¡Excelente desempeño!'; }
+    else if (puntosTotal >= 30) { emoji = '👏'; titulo = '¡Bien hecho!'; }
+    else { emoji = '📚'; titulo = 'Sigue aprendiendo'; }
+
+    document.getElementById('emoji-result').textContent = emoji;
+    document.getElementById('titulo-result').textContent = titulo;
+    document.getElementById('msg-result').textContent =
+      `${nombre}, tu actividad del Tema 3 fue enviada al correo del docente. ¡Recuerda poner en práctica el autocuidado cada día!`;
+    document.getElementById('progreso').style.width = '100%';
+  }
+</script>
+<!-- EmailJS CDN (envío real de correo) -->
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script>
+  // Inicializar EmailJS — el docente puede crear cuenta gratuita en emailjs.com
+  // y reemplazar 'TU_PUBLIC_KEY' con su clave real
+  try {
+    emailjs.init({ publicKey: 'TU_PUBLIC_KEY_AQUI' });
+  } catch(e) { /* se usará fallback mailto */ }
+</script>
+</p>
+</div>
+</div>
+</div>
+</article>
+</div></main><div class="nav-buttons">
+<a href="../html/infografia-tema-3.html" title="Anterior" class="nav-button nav-button-left"><span>Anterior</span></a>
+<a href="../html/infografia-tema-4.html" title="Siguiente" class="nav-button nav-button-right"><span>Siguiente</span></a>
+</div>
+<footer id="siteFooter"><div id="siteFooterContent"> <div id="packageLicense" class="cc cc-by-sa"> <p> <span class="license-label">Licencia: </span><a href="https://creativecommons.org/licenses/by-sa/4.0/" class="license">Creative Commons: Reconocimiento - compartir igual 4.0</a></p>
+</div>
+</div></footer>
+</div>
+<p id="made-with-eXe"> <a href="https://exelearning.net/" target="_blank" rel="noopener"> <span>Creado con eXeLearning <span>(nueva ventana)</span></span></a></p>
+</body>
+</html>
